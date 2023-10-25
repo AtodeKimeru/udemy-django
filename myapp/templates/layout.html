@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        <!--titulo de cada página-->
+        {% endblock %}
+        | AtodeKimeru
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <div id="logotipo">
+            <!--logo django-->     
+            <img src="{% static 'images/logo.png' %}" alt="dj">
+            <h1>Sitio web con Django | AtodeKimeru </h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Inicio</a>
+            </li>
+            <li>
+                <a href="/contact">Contacto</a>
+            </li>
+            <li>
+                <a href="/page">Página</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <h2 class="title">Titulo prueba</h2>
+        {% block content %}
+            <!--contenido que viene de templates-->
+            <strong>Contenido bloque original!</strong>
+        {% endblock %}
+    </div>
+
+    <footer>
+        Master en python &copy, AtodeKimeru 2023
+    </footer>
+</body>
+
+</html>
