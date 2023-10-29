@@ -36,13 +36,19 @@
             </li>
         </ul>
     </nav>
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
 
     <div id="content">
-        <h2 class="title">Titulo prueba</h2>
-        {% block content %}
-            <!--contenido que viene de templates-->
-            <strong>Contenido bloque original!</strong>
-        {% endblock %}
+        <div class="box">
+            {% block content %}
+                <!--contenido que viene de templates-->
+                <strong>Contenido bloque original!</strong>
+            {% endblock %}
+        </div>
     </div>
 
     <footer>

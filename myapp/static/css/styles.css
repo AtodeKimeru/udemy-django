@@ -11,6 +11,8 @@ body {
     background-color: #f2f2f2;
 }
 
+/* Estilos cabecera */
+
 header {
     width: 1212px;
     height: 140px;
@@ -40,4 +42,107 @@ header {
     /* letter-spacing: 2px; */
     font-weight: lighter;
     color: #2ba977;
+}
+
+/*Estilos barras de navegación*/
+
+nav{
+    width: 1250px;
+    height: 40px;
+    margin: 0 auto;
+    background-color: #1b1e1f;
+    border: 1px solid #333333;
+    box-shadow: 0px 22px 22px gray;
+    font-size: 15px;
+}
+
+nav ul{
+    list-style: none;
+    text-decoration: none;
+}
+
+nav ul li{
+    line-height: 40px;
+    float: left;
+}
+
+nav ul li a{
+    display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #d1d4d6;
+}
+
+nav ul li a:hover{
+    background-color: #2ba977;
+    box-shadow: 0px 0px 5px #444 inset;
+    color: white;
+    transition: all 300ms;
+}
+
+.barra{
+    width: 1250px;
+    margin: 0 auto;
+}
+
+.esquina-izquierda{
+    display: block;
+    border-left: 20px solid transparent;
+    border-top: 10px solid #2b2f30;
+    float: left;
+}
+
+.esquina-derecha{
+    display: block;
+    border-right: 20px solid transparent;
+    border-top: 10px solid #2b2f30;
+    float: right;
+}
+
+.relleno-barra{
+    display: block;
+    width: 1210px;
+    background-color: #2b2f30;
+    height: 10px;
+    float: left;
+}
+
+/*Estilos contenido central*/
+
+#content{
+    width: 1212px;
+    min-height: 930px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.box{
+    background-color: white;
+    width: 95%;
+    min-height: 930px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+.title{
+    color: #444;
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+footer{
+    width: 1250px;
+    background-color: #1b1e1f;
+    border: 1px solid #333;
+    color: #d1d4d6;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0px 0px 20px gray;
 }
