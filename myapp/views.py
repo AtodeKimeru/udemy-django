@@ -2,15 +2,15 @@ from django.shortcuts import render, HttpResponse, redirect
 
 
 def index(request):
-    years = "<ul>"
-    n = 2023
-    for i in range(10):
-        n += i
-        years += f"<li>{n}</li>"
-    years += "</ul>"
+    years = range(2023, 2051)
+    
+    nombre = 'Iván Camilo'
 
     return render(request, 'index.html', {
-        years: years,
+        'title': 'Inicio',
+        'years': years,
+        'mi_variable': 'Soy un dato que esta en la vista',
+        'nombre': nombre,
     })
 
 

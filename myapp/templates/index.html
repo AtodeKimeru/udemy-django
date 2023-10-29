@@ -4,7 +4,22 @@
 
 {% block content %}
 
-<h1 class="title">my web</h1>
-<p>Hola mundo :D</p>
-{{ years }}
+{% comment 'Nota para el comentario' %}
+<h1>Este comentario no será procesado o visto en el browser</h1>
+{% endcomment %}
+
+<h1 class="title">my web - {{title}}</h1>
+
+<p>{{ mi_variable }}</p>
+
+{% if nombre %}
+    <p>{{ nombre }}</p>
+{% else %}
+    <strong>No hay nombre</strong>
+{% endif %}
+    
+    <p>Hola mundo :D</p>
+    
+{% include 'fecha_actual.html' with saludo="Hello world from template" %} <!--only (to restrict variables)-->
+
 {% endblock %}

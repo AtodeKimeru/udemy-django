@@ -1,0 +1,19 @@
+<hr/>
+<br/>
+<h1>{{saludo}}: {{nombre}}</h1>
+<h1>Today is 2023</h1>
+<ul>
+    <!--  forloop.
+        first
+        last
+        counter
+        counter0
+     --> 
+    {% for year in years %}
+        {% if year|divisibleby:2 %}
+            <li>{{year}} {{ forloop.revcounter0 }}</li>
+        {% endif %}
+    {% empty %}
+        <i>Any year here</i>
+    {% endfor %}
+</ul>

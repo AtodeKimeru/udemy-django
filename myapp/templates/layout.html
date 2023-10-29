@@ -26,13 +26,13 @@
     <nav>
         <ul>
             <li>
-                <a href="/">Inicio</a>
+                <a href="{% url 'index' %}">Inicio</a>
             </li>
             <li>
-                <a href="/contact">Contacto</a>
+                <a href="{% url 'contact' 'Iván' 'Barragán' %}">Contacto</a>
             </li>
             <li>
-                <a href="/page">Página</a>
+                <a href="{% url 'page' %}">Página</a>
             </li>
         </ul>
     </nav>
@@ -52,7 +52,7 @@
     </div>
 
     <footer>
-        Master en python &copy, AtodeKimeru 2023
+        Master en python &copy, AtodeKimeru - {% now "d/m/Y h:m" %}
     </footer>
 </body>
 
