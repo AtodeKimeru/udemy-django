@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block title %} Listado de articulos {% endblock %}
+
+{% block content %}
+
+<h1 class="title">Listado de artículos</h1>
+<ul>
+    {% for articulo in articulos %}
+        <li>{{articulo.id}}. {{articulo.title}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

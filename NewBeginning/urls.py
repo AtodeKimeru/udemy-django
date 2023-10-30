@@ -25,5 +25,8 @@ urlpatterns = [
     path('contact/<str:name>/<str:lastname>', views.contact, name='contact'),
     path('page/', views.page, name='page'),
     path('page/<int:redir>', views.page, name='page'),
-    path('create-article/', views.crear_articulo, name='create_article'),
+    path('create-article/<str:title>/<str:content>/<str:public>', views.crear_articulo, name='create_article'),
+    path('article/', views.articulo, name='article'),
+    path('edit-article/<int:id>', views.editar_articulo, name='edit_article'),
+    path('articles/', views.articulos, name='articles'),
 ]
