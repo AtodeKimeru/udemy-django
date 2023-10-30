@@ -44,6 +44,38 @@ def crear_articulo(request, title, content, public):
     return HttpResponse(f"Usuario creado: <strong>{articulo.title}</strong> - {articulo.content}")
 
 
+def save_article(request):
+
+    if request.method == 'POST':
+
+        title = request.POST['title']
+
+        if len(title) <= 5:
+            return HttpResponse("<h2>El titulo es muy pequeño</h2>")
+
+        content = request.POST['content']
+        public = request.POST['public']
+
+        articulo = Article(
+            title = title,
+            content = content,
+            public = public,
+            create_at = timezone.now(),
+            update_at = timezone.now(),
+        )
+        articulo.save()
+
+        return HttpResponse(f"Usuario creado: <strong>{articulo.title}</strong> - {articulo.content}")
+    
+    else:
+        return HttpResponse("<h2>No se ha podido crear el articulo</h2>")
+
+
+def create_article(request):
+
+    return render(request, 'create_article.html')
+
+
 def articulo(request):
     try:
         articulo = Article.objects.get(id=1, public=True)
@@ -68,7 +100,6 @@ def editar_articulo(request, id):
 
 
 def articulos(request):
-    articulos = Article.objects.all()
 
     articulos_filtrados1 = Article.objects.filter(title__iexact="articulo")
     articulos_filtrados2 = Article.objects.filter(id__gte=9).exclude(public=False)
@@ -79,6 +110,7 @@ def articulos(request):
     articulos = Article.objects.filter(
         Q(id__contains="1") | Q(title__contains="artic")
     )
+    articulos = Article.objects.all().order_by('-id')
 
     return render(request, 'articulos.html', {
         'articulos': articulos,
