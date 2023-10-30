@@ -1,7 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.utils import timezone
 from django.db.models import Q
+from django.contrib import messages
 from myapp.models import Article
+from myapp.forms import FormArticle
 
 
 def index(request):
@@ -74,6 +76,42 @@ def save_article(request):
 def create_article(request):
 
     return render(request, 'create_article.html')
+
+
+def create_full_article(request):
+
+    if request.method == 'POST':
+
+        formulario = FormArticle(request.POST)
+
+        if formulario.is_valid():
+
+            data_form = formulario.cleaned_data
+
+            title = data_form.get('title')
+            content = data_form['content']
+            public = data_form['public']
+
+            articulo = Article(
+            title = title,
+            content = content,
+            public = public,
+            create_at = timezone.now(),
+            update_at = timezone.now(),
+            )
+            articulo.save()
+
+            # Crear mensaje flash (sesión que solo se muestra una vez)
+            messages.success(request, f'Has creado correctamente el articulo {articulo.id}')
+
+            return redirect('articles')
+
+    else:
+        formulario = FormArticle()
+
+    return render(request, 'create_full_article.html', {
+        'form': formulario,
+    })
 
 
 def articulo(request):
