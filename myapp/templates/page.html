@@ -1,3 +1,4 @@
+<!-- language: html-django -->
 {% extends "layout.html" %}
 
 {% block title %}Page{% endblock %}
@@ -6,6 +7,27 @@
 
 {{ block.super }}
 <h1 class="title">This is page of my web</h1>
-<p>Created by AtodeKimeru</p>
+<p>{{"Created by AtodeKimeruñ"|cut:"ñ"}}</p>
+
+<h3>Filters</h3> 
+
+{{texto|default:"No hay texto"}}
+
+<p>{{texto|upper}}</p>
+<p>{{texto|lower}}</p>
+
+<p>{{lista|first}}</p>
+<p>{{lista|last}}</p>
+<p>{{lista|join:' -'}}</p>
+<p>{{lista|length}}</p>
+<p>{{lista|random}}</p>
+
+<p>{{ "tag <h1>Hola</h1>"|striptags|wordcount}}</p>
+<p>{{ "tag <h1>Hola</h1>"|striptags}}</p>
+<p>{{ "tag <h1>Hola</h1>"}}</p>
+
+
+{% load filters %}
+{{"Ivan"|saludo|safe}}
 
 {% endblock %}

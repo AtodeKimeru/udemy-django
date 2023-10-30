@@ -19,7 +19,10 @@ def page(request, redir=0):
     if redir == 1:
         return redirect('contact', name="Atode", lastname="Kimeru")
 
-    return render(request, 'page.html')
+    return render(request, 'page.html',{
+        'texto': "Xd",
+        'lista': ['uno', 'dos', 'tres', 'cuatro', 'cinco'],
+    })
 
 
 def contact(request, name="", lastname=""):
