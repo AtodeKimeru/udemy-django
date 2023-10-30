@@ -8,8 +8,8 @@ class Article(models.Model):
     content = models.TextField(null=True)
     image = models.ImageField(default='null')
     public = models.BooleanField(default=False)
-    create_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+    create_at = models.DateTimeField('create_at')
+    update_at = models.DateTimeField('update_at')
 
     def __str__(self):
         return self.title

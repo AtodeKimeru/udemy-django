@@ -156,3 +156,12 @@ footer{
     padding-bottom: 20px;
     box-shadow: 0px 0px 20px gray;
 }
+
+#filtrados{
+    display: block;
+    float: right;
+}
+
+#nofilt {
+    display: inline-block;
+}

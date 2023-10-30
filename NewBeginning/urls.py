@@ -29,4 +29,5 @@ urlpatterns = [
     path('article/', views.articulo, name='article'),
     path('edit-article/<int:id>', views.editar_articulo, name='edit_article'),
     path('articles/', views.articulos, name='articles'),
+    path('delete-article/<int:id>', views.borrar_articulo, name='delete'),
 ]

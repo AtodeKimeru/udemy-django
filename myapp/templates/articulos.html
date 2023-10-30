@@ -5,10 +5,33 @@
 {% block content %}
 
 <h1 class="title">Listado de artículos</h1>
-<ul>
+<ul id="nofilt">
     {% for articulo in articulos %}
-        <li>{{articulo.id}}. {{articulo.title}}</li>
+        <li>
+            <h4>{{articulo.id}}. {{articulo.title}}</h4>
+            <span>{{articulo.create_at}}</span>
+            <p>
+                {{articulo.content}}<br/>
+                <a href="{% url 'delete' articulo.id %}">Eliminar</a>
+            </p>
+            <br/>
+        </li>
     {% endfor %}
+</ul>
+<ul id="filtrados">
+    <h4>filtrar</h4><hr/><br/>
+    {% for articulo in articulos_filtrados %}
+        <li>
+            <h4>{{articulo.id}}. {{articulo.title}}</h4>
+            <span>{{articulo.create_at}}</span>
+            <p>
+                {{articulo.content}}
+            </p>
+            <br/>
+        </li>
+        
+    {% endfor %}
+
 </ul>
 
 {% endblock %}

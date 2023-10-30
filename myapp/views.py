@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.utils import timezone
+from django.db.models import Q
 from myapp.models import Article
 
 
@@ -35,6 +37,8 @@ def crear_articulo(request, title, content, public):
         title = title,
         content = content,
         public = public,
+        create_at = timezone.now(),
+        update_at = timezone.now(),
     )
     articulo.save()
     return HttpResponse(f"Usuario creado: <strong>{articulo.title}</strong> - {articulo.content}")
@@ -56,6 +60,7 @@ def editar_articulo(request, id):
     articulo.title = "Batman"
     articulo.content = "Batman es el mejor superheroe"
     articulo.public = True
+    articulo.update_at = timezone.now()
 
     articulo.save()
 
@@ -63,9 +68,21 @@ def editar_articulo(request, id):
 
 
 def articulos(request):
-    articulos = Article.objects.order_by('-id')[1:4]
+    articulos = Article.objects.all()
+
+    articulos_filtrados1 = Article.objects.filter(title__iexact="articulo")
+    articulos_filtrados2 = Article.objects.filter(id__gte=9).exclude(public=False)
+    articulos_filtrados = articulos_filtrados1 | articulos_filtrados2
+
+    articulos_filtrados = Article.objects.raw("SELECT * FROM myapp_article WHERE title='articulo' AND public=1")
+
+    articulos = Article.objects.filter(
+        Q(id__contains="1") | Q(title__contains="artic")
+    )
+
     return render(request, 'articulos.html', {
         'articulos': articulos,
+        'articulos_filtrados': articulos_filtrados,
     })
 
 
