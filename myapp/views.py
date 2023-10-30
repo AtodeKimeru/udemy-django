@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from myapp.models import Article
 
 
 def index(request):
@@ -27,3 +28,13 @@ def page(request, redir=0):
 
 def contact(request, name="", lastname=""):
     return HttpResponse(f"<h2>This is contact page</h2><p>{name} {lastname}</p>")
+
+
+def crear_articulo(request):
+    articulo = Article(
+        title='Primer articulo',
+        content='Contenido del articulo',
+        public=True
+    )
+    articulo.save()
+    return HttpResponse("Usuario creado: ")
