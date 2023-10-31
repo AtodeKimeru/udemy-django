@@ -138,21 +138,20 @@ def editar_articulo(request, id):
 
 
 def articulos(request):
+    ###### filtros ######
+    # articulos_filtrados1 = Article.objects.filter(title__iexact="articulo")
+    # articulos_filtrados2 = Article.objects.filter(id__gte=9).exclude(public=False)
+    # articulos_filtrados = articulos_filtrados1 | articulos_filtrados2
 
-    articulos_filtrados1 = Article.objects.filter(title__iexact="articulo")
-    articulos_filtrados2 = Article.objects.filter(id__gte=9).exclude(public=False)
-    articulos_filtrados = articulos_filtrados1 | articulos_filtrados2
+    # articulos_filtrados = Article.objects.raw("SELECT * FROM myapp_article WHERE title='articulo' AND public=1")
 
-    articulos_filtrados = Article.objects.raw("SELECT * FROM myapp_article WHERE title='articulo' AND public=1")
-
-    articulos = Article.objects.filter(
-        Q(id__contains="1") | Q(title__contains="artic")
-    )
-    articulos = Article.objects.all().order_by('-id')
+    # articulos = Article.objects.filter(
+    #     Q(id__contains="1") | Q(title__contains="artic")
+    # )
+    articulos = Article.objects.filter(public=True).order_by('-id')
 
     return render(request, 'articulos.html', {
         'articulos': articulos,
-        'articulos_filtrados': articulos_filtrados,
     })
 
 
